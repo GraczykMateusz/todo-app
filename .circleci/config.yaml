@@ -1,0 +1,55 @@
+version: 2.1
+
+workflows:
+  astral-prod:
+    jobs:
+      - build-and-deploy-frontend:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+
+jobs:
+  build-and-deploy-frontend:
+    docker:
+      - image: cimg/node:16.17.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - astral-{{ checksum "package.json" }}
+            - astral-
+
+      - run:
+          name: set up secret key
+          command: sed -i "s/{}/$FIREBASE_API/g" src/config/keys.ts
+
+      - run:
+          name: set up ci build number
+          command: |
+            sed -i "s/1.0/$CIRCLE_BUILD_NUM/g" src/environments/environment.prod.ts
+            sed -i "s/1.0/$CIRCLE_BUILD_NUM/g" src/environments/environment.ts
+      - run:
+          name: install dependencies
+          command: npm install --legacy-peer-deps
+      - run:
+          name: install firebase CLI
+          command: npm install --save-dev --legacy-peer-deps firebase-tools
+      - run:
+          name: build module
+          command: npm run-script build
+
+      - save_cache:
+          paths:
+            - ~/node_modules
+          key: astral-{{ checksum "package.json" }}
+
+      - run:
+          name: Create google service account key JSON
+          command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/key.json
+      - run:
+          name: Deploy to hosting
+          command: |
+            GOOGLE_APPLICATION_CREDENTIALS=/tmp/key.json
+            ./node_modules/.bin/firebase deploy --only hosting --project $PROJECT_ID
