@@ -1,6 +1,8 @@
 html, body {
-  min-width: 100vw;
+  width: 100vw;
+  min-width: 280px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body {

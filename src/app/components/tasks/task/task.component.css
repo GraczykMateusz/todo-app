@@ -4,4 +4,34 @@
 
 h6 {
   color: #FEFEFEFF;
+  font-size: 0.8rem;
+}
+
+.height-50 {
+  height: 50px;
+}
+
+/* Checkbox with rounded corners */
+input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 2px solid #eb06ff;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Green border when checked */
+input[type=checkbox]:checked {
+  border-color: #2ecc71;
+}
+
+/* Cross out h6 text when checkbox is checked */
+input[type=checkbox]:checked ~ h6 {
+  text-decoration: line-through;
 }
