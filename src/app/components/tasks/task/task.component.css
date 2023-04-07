@@ -6,6 +6,19 @@
   height: calc(2.25rem + 2vw);
 }
 
+h4 {
+  margin-bottom: 0 !important;
+}
+
+.task-text-max-width {
+  max-width: calc(73vw);
+}
+
+.checkbox-size {
+  width: 50px;
+  height: 100%;
+}
+
 /* Checkbox with rounded corners */
 input[type=checkbox] {
   appearance: none;
@@ -14,8 +27,8 @@ input[type=checkbox] {
   outline: none;
   border: 2px solid #eb06ff;
   border-radius: 20px;
-  width: 20px;
-  height: 20px;
+  width: 1.6rem;
+  height: 1.6rem;
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease-in-out;
