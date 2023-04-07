@@ -1,14 +1,9 @@
-.task {
+.task-bg {
   background-color: #0C1954FF;
 }
 
-h6 {
-  color: #FEFEFEFF;
-  font-size: 0.8rem;
-}
-
-.height-50 {
-  height: 50px;
+.task-height {
+  height: calc(2.25rem + 2vw);
 }
 
 /* Checkbox with rounded corners */
@@ -34,4 +29,23 @@ input[type=checkbox]:checked {
 /* Cross out h6 text when checkbox is checked */
 input[type=checkbox]:checked ~ h6 {
   text-decoration: line-through;
+}
+
+/* White tick icon when checkbox is checked */
+input[type=checkbox]:checked::before {
+  content: "";
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: 14px;
+  height: 7px;
+  border: 3px solid #fff;
+  border-top: none;
+  border-right: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Rotate tick icon when checkbox is checked */
+input[type=checkbox]:checked::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
