@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class TaskComponent {
 
+  private _taskCompleted: boolean = false;
+
+  get isClassEnabled(): boolean {
+    return this._taskCompleted;
+  }
+
+  toggleCompleteTask(): void {
+    this._taskCompleted = !this._taskCompleted;
+  }
 }

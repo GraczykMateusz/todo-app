@@ -39,8 +39,7 @@ input[type=checkbox]:checked {
   border-color: #2ecc71;
 }
 
-/* Cross out h6 text when checkbox is checked */
-input[type=checkbox]:checked ~ h6 {
+.strike-through {
   text-decoration: line-through;
 }
 
@@ -48,10 +47,10 @@ input[type=checkbox]:checked ~ h6 {
 input[type=checkbox]:checked::before {
   content: "";
   position: absolute;
-  top: 52%;
+  top: 50%;
   left: 50%;
   width: 14px;
-  height: 7px;
+  height: 6px;
   border: 3px solid #fff;
   border-top: none;
   border-right: none;
