@@ -1,0 +1,51 @@
+version: 2.1
+
+workflows:
+  build_and_deploy:
+    jobs:
+      - build_and_deploy:
+          filters:
+            branches:
+              only: master
+
+jobs:
+  build-and-deploy-frontend:
+    docker:
+      - image: cimg/node:16.17.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+
+      - run:
+          name: Set up secret key
+          command: sed -i "s/{}/$FIREBASE_API/g" src/config/keys.ts
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Install firebase CLI
+          command: npm install --save-dev firebase-tools
+
+      - run:
+          name: Build module
+          command: npm run-script build
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Create firebase service account JSON key
+          command: echo FIREBASE_SERVICE_ACCOUNT > /tmp/key.json
+
+      - run:
+          name: Deploy to hosting
+          command: |
+            FIREBASE_SERVICE_ACCOUNT=/tmp/key.json
+            firebase deploy --only hosting --project $PROJECT_ID
