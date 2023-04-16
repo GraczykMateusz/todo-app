@@ -9,7 +9,7 @@ export class TaskComponent {
 
   private _taskCompleted: boolean = false;
 
-  get isClassEnabled(): boolean {
+  get isTaskCompleted(): boolean {
     return this._taskCompleted;
   }
 

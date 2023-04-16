@@ -6,8 +6,11 @@
   height: calc(2.25rem + 2vw);
 }
 
-h4 {
-  margin-bottom: 0 !important;
+input[type=text] {
+  background: unset;
+  border-width: 0 !important;
+  padding: 0 !important;
+  font-size: calc(0.85rem + 0.5vw) !important;
 }
 
 .task-text-max-width {

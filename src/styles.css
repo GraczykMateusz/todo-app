@@ -33,7 +33,7 @@ h6 {
   font-size: calc(0.5rem + 0.5vw) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, input[type=text] {
   color: #F9FBFFFF;
   font-family: 'Noto Sans', sans-serif;
 }
