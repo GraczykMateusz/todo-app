@@ -17,13 +17,12 @@ import {environment} from '../environments/environment';
     DashboardComponent,
     DailyTasksDashboardComponent,
     WeeklyTasksDashboardComponent,
-    DayComponent,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-
+    DayComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
