@@ -1,0 +1,79 @@
+.task-bg {
+  background-color: #0C1954FF;
+}
+
+.task-bg.removing {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.task-height {
+  height: calc(2.25rem + 2vw);
+}
+
+input[type=text] {
+  background: unset;
+  border-width: 0 !important;
+  padding: 0 !important;
+  font-size: calc(0.85rem + 0.5vw) !important;
+}
+
+.task-text-max-width {
+  max-width: calc(73vw);
+}
+
+.checkbox-size {
+  width: 50px;
+  height: 100%;
+}
+
+/* Checkbox with rounded corners */
+input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 2px solid #eb06ff;
+  border-radius: 20px;
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Green border when checked */
+input[type=checkbox]:checked {
+  border-color: #2ecc71;
+}
+
+/* Task content strike when checkbox is checked */
+.strike-through {
+  text-decoration: line-through;
+}
+
+/* White tick icon when checkbox is checked */
+input[type=checkbox]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 6px;
+  border: 3px solid var(--bs-light);
+  border-top: none;
+  border-right: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Rotate tick icon when checkbox is checked */
+input[type=checkbox]:checked::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Set trash icon color */
+i.fa-trash {
+  color: var(--bs-light) !important;
+}
