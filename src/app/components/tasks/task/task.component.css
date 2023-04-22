@@ -2,6 +2,13 @@
   background-color: #0C1954FF;
 }
 
+.task-bg.removing {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
 .task-height {
   height: calc(2.25rem + 2vw);
 }
@@ -42,6 +49,7 @@ input[type=checkbox]:checked {
   border-color: #2ecc71;
 }
 
+/* Task content strike when checkbox is checked */
 .strike-through {
   text-decoration: line-through;
 }
@@ -54,7 +62,7 @@ input[type=checkbox]:checked::before {
   left: 50%;
   width: 14px;
   height: 6px;
-  border: 3px solid #fff;
+  border: 3px solid var(--bs-light);
   border-top: none;
   border-right: none;
   transition: all 0.3s ease-in-out;
@@ -63,4 +71,9 @@ input[type=checkbox]:checked::before {
 /* Rotate tick icon when checkbox is checked */
 input[type=checkbox]:checked::before {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Set trash icon color */
+i.fa-trash {
+  color: var(--bs-light) !important;
 }
