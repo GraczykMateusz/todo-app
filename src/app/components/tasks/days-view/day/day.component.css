@@ -2,9 +2,9 @@
   background-color: #0C1954FF;
 }
 
-h6 {
-  color: #FEFEFEFF;
-  font-size: 0.8rem;
+h3 {
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
 .height-50 {

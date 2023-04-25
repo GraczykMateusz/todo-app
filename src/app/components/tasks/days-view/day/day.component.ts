@@ -9,5 +9,4 @@ export class DayComponent {
 
   @Input() name?: string;
   @Input() taskCount?: string;
-
 }
