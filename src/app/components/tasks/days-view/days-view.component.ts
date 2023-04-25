@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 
 export enum WEEK {
+  TODAY = "TODAY",
   MONDAY = "MONDAY",
   TUESDAY = "TUESDAY",
   WEDNESDAY = "WEDNESDAY",
