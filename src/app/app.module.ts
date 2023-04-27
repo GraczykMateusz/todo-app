@@ -9,6 +9,7 @@ import {TaskForTheDayView} from './components/tasks/task-for-the-day-view/task-f
 import {DaysViewComponent} from './components/tasks/days-view/days-view.component';
 import {DayComponent} from './components/tasks/days-view/day/day.component';
 import {environment} from '../environments/environment';
+import {AddTaskViewComponent} from './components/tasks/add-task-view/add-task-view.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {environment} from '../environments/environment';
     MainDashboardComponent,
     TaskForTheDayView,
     DaysViewComponent,
-    DayComponent
+    DayComponent,
+    AddTaskViewComponent
   ],
   imports: [
     BrowserModule,
