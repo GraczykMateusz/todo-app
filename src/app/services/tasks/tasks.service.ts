@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {NgbSlideEventDirection} from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,8 @@ import { Injectable } from '@angular/core';
 export class TasksService {
 
   constructor() { }
+
+  refreshTasks(direction: NgbSlideEventDirection) {
+
+  }
 }

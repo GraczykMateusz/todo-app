@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {DaysService} from '../../../services/days/days.service';
-import {WEEK} from '../../../services/days/days';
+import {Day} from '../../../services/days/days';
+import {NgbSlideEvent} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-days-view',
@@ -10,10 +11,12 @@ import {WEEK} from '../../../services/days/days';
 })
 export class DaysViewComponent {
 
-  readonly week: WEEK[] = Object.values(WEEK);
+  readonly daysInOrder: Day[] = this.daysService.getDaysInOrder();
 
-  readonly date: Date = this.daysService.getCurrentDay();
+  constructor(private daysService: DaysService) {
+  }
 
-  constructor(public daysService: DaysService) {
+  changeDay(event: NgbSlideEvent) {
+    this.daysService.changeDay(event.direction);
   }
 }

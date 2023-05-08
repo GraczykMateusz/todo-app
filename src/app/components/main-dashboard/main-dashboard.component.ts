@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DaysService} from '../../services/days/days.service';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class MainDashboardComponent {
 
+  readonly dayNameToDisplay = this.daysService.getDayNameToDisplay();
+
+  constructor(private daysService: DaysService) {
+  }
 }
