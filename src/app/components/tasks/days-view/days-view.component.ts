@@ -1,15 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-
-export enum WEEK {
-  TODAY = "TODAY",
-  MONDAY = "MONDAY",
-  TUESDAY = "TUESDAY",
-  WEDNESDAY = "WEDNESDAY",
-  THURSDAY = "THURSDAY",
-  FRIDAY = "FRIDAY",
-  SATURDAY = "SATURDAY",
-  SUNDAY = "SUNDAY"
-}
+import {DaysService} from '../../../services/days/days.service';
+import {WEEK} from '../../../services/days/days';
 
 @Component({
   selector: 'app-days-view',
@@ -21,4 +12,8 @@ export class DaysViewComponent {
 
   readonly week: WEEK[] = Object.values(WEEK);
 
+  readonly date: Date = this.daysService.getCurrentDay();
+
+  constructor(public daysService: DaysService) {
+  }
 }

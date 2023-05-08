@@ -8,5 +8,6 @@ import {Component, Input} from '@angular/core';
 export class DayComponent {
 
   @Input() name?: string;
-  @Input() taskCount?: string;
+  @Input() date?: Date;
+  @Input() taskCount?: number;
 }

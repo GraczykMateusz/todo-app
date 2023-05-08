@@ -2,7 +2,7 @@
   <ng-container>
     <ng-template ngbSlide *ngFor="let day of week">
       <div class="d-flex justify-content-around">
-        <app-day class="d-flex w-100" [name]="day"></app-day>
+        <app-day class="d-flex w-100" [name]="day" [date]="date"></app-day>
       </div>
     </ng-template>
   </ng-container>
