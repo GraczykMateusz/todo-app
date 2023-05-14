@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
+import {TasksService} from '../../../../services/tasks/tasks.service';
 
 @Component({
   selector: 'app-task',
@@ -6,6 +7,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent {
+
+  @Input()
+  public id!: number;
+
+  private readonly taskService: TasksService = inject(TasksService);
 
   private _isTaskCompleted: boolean = false;
   private _isTaskRemoving: boolean = false;
@@ -24,5 +30,6 @@ export class TaskComponent {
 
   removeTask(): void {
     this._isTaskRemoving = true;
+    this.taskService.removeTask(this.id);
   }
 }
