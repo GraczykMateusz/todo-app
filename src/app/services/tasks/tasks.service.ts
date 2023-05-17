@@ -2,6 +2,8 @@ import {inject, Injectable} from '@angular/core';
 import {NgbSlideEventDirection} from '@ng-bootstrap/ng-bootstrap';
 import {BehaviorSubject} from 'rxjs';
 import {addDoc, collection, collectionData, Firestore} from '@angular/fire/firestore';
+import {NewTask} from './model/new-task';
+import {mapToObject} from '@angular/fire/compat/remote-config';
 // import {collection, collectionData, Firestore} from '@angular/fire/firestore';
 
 @Injectable({
@@ -21,8 +23,12 @@ export class TasksService {
 
   }
 
+  addTask(task: NewTask) {
+    return addDoc(this.tasksCollection, task.asObject());
+  }
+
   removeTask(id: number): void {
-    addDoc(this.tasksCollection, {"xd": "xd"}).then(() => console.log("hahhaha"))
+    // addDoc(this.tasksCollection, {"xd": "xd"}).then(() => console.log("hahhaha"))
 
     this.taskToRemove.next(id);
   }
