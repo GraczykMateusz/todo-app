@@ -32,7 +32,7 @@ export class TasksService {
   removeTask(id: number): void {
     // addDoc(this.tasksCollection, {"xd": "xd"}).then(() => console.log("hahhaha"))
 
-    this.taskToRemove.next(id);
+    this.taskToRemove.next(id)
   }
 
   getTaskToRemove() {
