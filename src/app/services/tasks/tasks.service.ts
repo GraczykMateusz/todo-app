@@ -3,7 +3,9 @@ import {NgbSlideEventDirection} from '@ng-bootstrap/ng-bootstrap';
 import {BehaviorSubject} from 'rxjs';
 import {addDoc, collection, collectionData, Firestore} from '@angular/fire/firestore';
 import {NewTask} from './model/new-task';
-import {mapToObject} from '@angular/fire/compat/remote-config';
+import {mapOneOrManyArgs} from 'rxjs/internal/util/mapOneOrManyArgs';
+import {Task} from './model/task';
+
 // import {collection, collectionData, Firestore} from '@angular/fire/firestore';
 
 @Injectable({
@@ -38,6 +40,9 @@ export class TasksService {
   }
 
   getTasks() {
-    return collectionData(this.tasksCollection);
+    return collectionData(this.tasksCollection, {idField: 'id'})
+      .pipe(
+        mapOneOrManyArgs(values => values as Task)
+      );
   }
 }
