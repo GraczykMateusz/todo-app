@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {DaysService} from '../../services/days/days.service';
 
 @Component({
@@ -8,8 +8,6 @@ import {DaysService} from '../../services/days/days.service';
 })
 export class MainDashboardComponent {
 
-  readonly dayNameToDisplay = this.daysService.getDayNameToDisplay();
-
-  constructor(private daysService: DaysService) {
-  }
+  private readonly daysService: DaysService = inject(DaysService);
+  readonly currentDay$ = this.daysService.currentDay;
 }

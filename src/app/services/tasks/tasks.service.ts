@@ -1,12 +1,8 @@
-import {inject, Injectable} from '@angular/core';
-import {NgbSlideEventDirection} from '@ng-bootstrap/ng-bootstrap';
-import {BehaviorSubject} from 'rxjs';
-import {addDoc, collection, collectionData, Firestore} from '@angular/fire/firestore';
-import {NewTask} from './model/new-task';
-import {mapOneOrManyArgs} from 'rxjs/internal/util/mapOneOrManyArgs';
-import {Task} from './model/task';
-
-// import {collection, collectionData, Firestore} from '@angular/fire/firestore';
+import { inject, Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, query, where, Timestamp } from '@angular/fire/firestore';
+import { NewTask } from './model/new-task';
+import { Task } from './model/task';
 
 @Injectable({
   providedIn: 'root'
@@ -16,33 +12,18 @@ export class TasksService {
   private readonly firestore: Firestore = inject(Firestore);
   private readonly tasksCollection = collection(this.firestore, 'tasks');
 
-  private readonly taskToRemove = new BehaviorSubject<number>(-1);
-
-  constructor() {
-  }
-
-  refreshTasks(direction: NgbSlideEventDirection) {
-
-  }
-
-  addTask(task: NewTask) {
+  addTask(task: NewTask): Promise<any> {
     return addDoc(this.tasksCollection, task.asObject());
   }
 
-  removeTask(id: number): void {
-    // addDoc(this.tasksCollection, {"xd": "xd"}).then(() => console.log("hahhaha"))
-
-    this.taskToRemove.next(id)
+  removeTask(id: string): Promise<void> {
+    return deleteDoc(doc(this.tasksCollection, id));
   }
 
-  getTaskToRemove() {
-    return this.taskToRemove.asObservable();
-  }
-
-  getTasks() {
-    return collectionData(this.tasksCollection, {idField: 'id'})
-      .pipe(
-        mapOneOrManyArgs(values => values as Task)
-      );
+  getTasksByDate(date: Date): Observable<Task[]> {
+    console.log(Timestamp.fromDate(date))
+    const queryFn: any = query(this.tasksCollection, where('date', '==', Timestamp.fromDate(date)));
+    return collectionData(queryFn, {idField: 'id'})
+      .pipe(map(values => values.map(value => value as Task)));
   }
 }

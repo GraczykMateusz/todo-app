@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaskForTheDayView } from './task-for-the-day-view.component';
+import { TaskForTheDayViewComponent } from './task-for-the-day-view.component';
 
-describe('TaskForTheDayComponent', () => {
-  let component: TaskForTheDayView;
-  let fixture: ComponentFixture<TaskForTheDayView>;
+describe('TaskForTheDayViewComponent', () => {
+  let component: TaskForTheDayViewComponent;
+  let fixture: ComponentFixture<TaskForTheDayViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaskForTheDayView ]
+      declarations: [TaskForTheDayViewComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(TaskForTheDayView);
+    fixture = TestBed.createComponent(TaskForTheDayViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

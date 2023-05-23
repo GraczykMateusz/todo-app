@@ -1,7 +1,7 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {DaysService} from '../../../services/days/days.service';
-import {Day} from '../../../services/days/days';
-import {NgbSlideEvent} from '@ng-bootstrap/ng-bootstrap';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
+import { DaysService } from '../../../services/days/days.service';
+import { Day } from '../../../services/days/days';
+import { NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-days-view',
@@ -11,12 +11,11 @@ import {NgbSlideEvent} from '@ng-bootstrap/ng-bootstrap';
 })
 export class DaysViewComponent {
 
-  readonly daysInOrder: Day[] = this.daysService.getDaysInOrder();
+  private readonly daysService: DaysService = inject(DaysService);
 
-  constructor(private daysService: DaysService) {
-  }
+  readonly days: Day[] = this.daysService.days;
 
-  changeDay(event: NgbSlideEvent) {
-    this.daysService.changeDay(event.direction);
+  changeDay(event: NgbSlideEvent): void {
+    this.daysService.changeDay(event.current);
   }
 }

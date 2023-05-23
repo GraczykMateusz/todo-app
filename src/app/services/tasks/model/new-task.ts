@@ -1,7 +1,7 @@
 export class NewTask {
   constructor(
     public content: string,
-    public lastUpdate: Date) {
+    public date: Date) {
   }
 
   asObject(): any {

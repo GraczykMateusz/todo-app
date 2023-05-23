@@ -1,5 +1,6 @@
-import {Component, inject, Input} from '@angular/core';
-import {TasksService} from '../../../../services/tasks/tasks.service';
+import { Component, inject, Input } from '@angular/core';
+import { TasksService } from '../../../../services/tasks/tasks.service';
+import { Task } from '../../../../services/tasks/model/task';
 
 @Component({
   selector: 'app-task',
@@ -9,7 +10,7 @@ import {TasksService} from '../../../../services/tasks/tasks.service';
 export class TaskComponent {
 
   @Input()
-  public id!: number;
+  public task!: Task;
 
   private readonly taskService: TasksService = inject(TasksService);
 
@@ -29,7 +30,7 @@ export class TaskComponent {
   }
 
   removeTask(): void {
-    this._isTaskRemoving = true;
-    this.taskService.removeTask(this.id);
+    this.taskService.removeTask(this.task.id)
+      .then(() => this._isTaskRemoving = true);
   }
 }

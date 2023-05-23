@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-day',
@@ -7,7 +7,7 @@ import {Component, Input} from '@angular/core';
 })
 export class DayComponent {
 
-  @Input() name?: string;
-  @Input() date?: Date;
-  @Input() taskCount?: number;
+  @Input() name!: string;
+  @Input() date!: Date;
+  @Input() taskCount!: number;
 }

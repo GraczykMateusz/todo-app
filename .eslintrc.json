@@ -51,6 +51,12 @@
             "allowTemplateLiterals": true
           }
         ],
+        "@typescript-eslint/typedef": [
+          "error",
+          {
+            "variableDeclaration": true
+          }
+        ],
         "@typescript-eslint/no-empty-function": [
           "error"
         ],

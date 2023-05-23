@@ -1,7 +1,6 @@
-import {Component, inject} from '@angular/core';
-import {TasksService} from '../../../services/tasks/tasks.service';
-import {NewTask} from '../../../services/tasks/model/new-task';
-import firebase from 'firebase/compat';
+import { Component, inject } from '@angular/core';
+import { TasksService } from '../../../services/tasks/tasks.service';
+import { NewTask } from '../../../services/tasks/model/new-task';
 
 @Component({
   selector: 'app-add-task-view',
@@ -12,8 +11,14 @@ export class AddTaskViewComponent {
 
   private readonly taskService = inject(TasksService);
 
+  public content: any;
+
   public addTask(): void {
-    const task = new NewTask('nananana', new Date());
-    this.taskService.addTask(task);
+    if (this.content == '' || this.content == null) {
+      return
+    }
+    const task: NewTask = new NewTask(this.content, new Date());
+    this.taskService.addTask(task)
+      .then();
   }
 }
