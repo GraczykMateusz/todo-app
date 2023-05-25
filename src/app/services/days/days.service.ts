@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Day, DAYS_OF_THE_WEEK_NAMES } from './days';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { OwnDate } from './own-date';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,6 @@ export class DaysService {
   private convertToDay(date: Date, index: number): Day {
     date.setDate(date.getDate() + index);
     const dayName: DAYS_OF_THE_WEEK_NAMES = Object.values(DAYS_OF_THE_WEEK_NAMES)[date.getDay()];
-    return new Day(dayName, date);
+    return new Day(dayName, new OwnDate(date));
   }
 }

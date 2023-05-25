@@ -14,15 +14,11 @@ export class TaskComponent {
 
   private readonly taskService: TasksService = inject(TasksService);
 
-  private _isTaskCompleted: boolean = false;
   private _isTaskRemoving: boolean = false;
 
-  get isTaskCompleted(): boolean {
-    return this._isTaskCompleted;
-  }
-
   toggleCompleteTask(): void {
-    this._isTaskCompleted = !this._isTaskCompleted;
+    this.taskService.toggleCompleteTask(this.task.id, !this.task.isCompleted)
+      .then(() => this.task.isCompleted = !this.task.isCompleted);
   }
 
   get isTaskRemoving(): boolean {

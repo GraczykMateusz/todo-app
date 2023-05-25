@@ -9,16 +9,16 @@ import { NewTask } from '../../../services/tasks/model/new-task';
 })
 export class AddTaskViewComponent {
 
-  private readonly taskService = inject(TasksService);
+  private readonly taskService: TasksService = inject(TasksService);
 
-  public content: any;
+  public content: string = '';
 
   public addTask(): void {
     if (this.content == '' || this.content == null) {
-      return
+      return;
     }
-    const task: NewTask = new NewTask(this.content, new Date());
+    const task: NewTask = new NewTask(this.content);
     this.taskService.addTask(task)
-      .then();
+      .then(() => this.content = '');
   }
 }

@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { OwnDate } from '../../../../services/days/own-date';
+import { TaskCount } from '../../../../services/tasks/model/task-count';
 
 @Component({
   selector: 'app-day',
@@ -8,6 +10,6 @@ import { Component, Input } from '@angular/core';
 export class DayComponent {
 
   @Input() name!: string;
-  @Input() date!: Date;
-  @Input() taskCount!: number;
+  @Input() ownDate!: OwnDate;
+  @Input() taskCount!: TaskCount;
 }

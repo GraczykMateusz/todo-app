@@ -2,7 +2,10 @@
   <ng-container>
     <ng-template ngbSlide *ngFor="let day of days">
       <div class="d-flex justify-content-around">
-        <app-day class="d-flex w-100" [name]="day.name" [date]="day.date"></app-day>
+        <app-day class="d-flex w-100"
+                 [name]="day.name"
+                 [ownDate]="day.date"
+                 [taskCount]="(taskCount$ | async)!"></app-day>
       </div>
     </ng-template>
   </ng-container>

@@ -1,3 +1,5 @@
+import {OwnDate} from './own-date';
+
 export enum DAYS_OF_THE_WEEK_NAMES {
   SUNDAY = 'SUNDAY',
   MONDAY = 'MONDAY',
@@ -11,6 +13,6 @@ export enum DAYS_OF_THE_WEEK_NAMES {
 export class Day {
   constructor(
     public name: DAYS_OF_THE_WEEK_NAMES,
-    public date: Date) {
+    public date: OwnDate) {
   }
 }
