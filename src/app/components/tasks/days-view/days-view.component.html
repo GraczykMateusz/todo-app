@@ -1,11 +1,8 @@
 <ngb-carousel class="w-100" [showNavigationIndicators]="false" [interval]="0" (slid)="changeDay($event)">
   <ng-container>
-    <ng-template ngbSlide *ngFor="let day of days">
+    <ng-template ngbSlide *ngFor="let day of days; let i = index">
       <div class="d-flex justify-content-around">
-        <app-day class="d-flex w-100"
-                 [name]="day.name"
-                 [ownDate]="day.date"
-                 [taskCount]="(taskCount$ | async)!"></app-day>
+        <app-day class="d-flex w-100" [day]="day" [isToday]="i === 0"></app-day>
       </div>
     </ng-template>
   </ng-container>

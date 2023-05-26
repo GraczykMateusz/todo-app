@@ -3,9 +3,13 @@ export class OwnDate {
   private readonly _date: string;
 
   constructor(date: Date) {
+    const day: number = date.getUTCDate();
+    const fixedDay: string =  day < 10 ? '0' + day : '' + day;
+
     const month: number = (date.getUTCMonth() + 1);
     const fixedMonth: string = month < 10 ? '0' + month : '' + month;
-    this._date = date.getUTCDate() + '-' + fixedMonth + '-' + date.getUTCFullYear();
+
+    this._date = fixedDay + '-' + fixedMonth + '-' + date.getUTCFullYear();
   }
 
   static today(): OwnDate {

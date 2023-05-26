@@ -1,6 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { OwnDate } from '../../../../services/days/own-date';
+import { Component, inject, Input } from '@angular/core';
 import { TaskCount } from '../../../../services/tasks/model/task-count';
+import { map, Observable, switchMap } from 'rxjs';
+import { Day } from '../../../../services/days/days';
+import { Task } from '../../../../services/tasks/model/task';
+import { TasksService } from '../../../../services/tasks/tasks.service';
+import { DaysService } from '../../../../services/days/days.service';
 
 @Component({
   selector: 'app-day',
@@ -9,7 +13,16 @@ import { TaskCount } from '../../../../services/tasks/model/task-count';
 })
 export class DayComponent {
 
-  @Input() name!: string;
-  @Input() ownDate!: OwnDate;
-  @Input() taskCount!: TaskCount;
+  @Input() day!: Day;
+  @Input() isToday!: boolean;
+
+  private readonly taskService: TasksService = inject(TasksService);
+  private readonly daysService: DaysService = inject(DaysService);
+
+  readonly taskCount$: Observable<TaskCount> = this.daysService.currentDay.pipe(
+    switchMap((day: Day) => this.taskService.getTasksByDate(day.ownDate)),
+    map((tasks: Task[]) => {
+      return new TaskCount(tasks.filter(task => task.isCompleted).length, tasks.length);
+    })
+  );
 }
