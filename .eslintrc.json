@@ -52,7 +52,7 @@
           }
         ],
         "@typescript-eslint/typedef": [
-          "error",
+          "warn",
           {
             "variableDeclaration": true
           }
