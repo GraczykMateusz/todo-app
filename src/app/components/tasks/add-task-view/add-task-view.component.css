@@ -1,0 +1,24 @@
+.task-bg {
+  background-color: #0C1954FF;
+}
+
+.task-height {
+  height: calc(2.25rem + 2vw);
+}
+
+input[type=text] {
+  background: unset;
+  border-width: 0 !important;
+  padding: 0 !important;
+  font-size: calc(0.85rem + 0.5vw) !important;
+}
+
+.task-text-max-width {
+  max-width: calc(73vw);
+}
+
+/* Set plus icon size and color */
+i.fa-plus {
+  font-size: calc(1rem + .5vw);
+  color: var(--bs-light) !important;
+}

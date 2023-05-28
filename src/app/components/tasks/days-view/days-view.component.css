@@ -1,0 +1,9 @@
+.carousel-control-next {
+  justify-content: flex-end !important;
+  margin-right: 0.25rem !important;
+}
+
+.carousel-control-prev {
+  justify-content: flex-start !important;
+  margin-left: 0.25rem !important;
+}

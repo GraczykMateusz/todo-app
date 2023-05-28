@@ -1,0 +1,8 @@
+<div class="task-bg w-100 h-100 me-1 ms-1 mb-2 rounded-4">
+  <div class="d-flex flex-column align-items-center">
+    <h3>{{day.name}}</h3>
+    <h6>{{day.ownDate.date}}<span *ngIf="isToday"> Today</span></h6>
+    <ngb-progressbar class="d-flex w-75" type="info" height="4px"
+                     [value]="(taskCount$ | async)?.completedPercent() || 0"></ngb-progressbar>
+  </div>
+</div>

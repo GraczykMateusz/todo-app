@@ -1,6 +1,6 @@
-import {FIREBASE_API_DEV} from "../config/keys";
+import {FIREBASE_API_DEV} from '../config/keys';
 
-export const environment = {
+export const environment: any = {
   production: false,
   firebaseConfig: FIREBASE_API_DEV
 };

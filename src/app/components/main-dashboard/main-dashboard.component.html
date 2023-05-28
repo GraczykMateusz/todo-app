@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-column m-4 m-sm-5">
+    <div class="d-flex flex-wrap justify-content-start">
+      <h1 class="me-3">What's up,</h1>
+      <h1>Mateusz! 😄</h1>
+    </div>
+    <h4 class="d-flex justify-content-start">DAYS OF THE WEEK:</h4>
+    <app-days-view class="d-flex mb-3"></app-days-view>
+    <h4 class="d-flex justify-content-start">{{(currentDay$ | async)?.name}}'S TASKS:</h4>
+    <app-add-task-view class="d-flex mb-2"></app-add-task-view>
+    <app-task-for-the-day class="d-flex mb-2"></app-task-for-the-day>
+  </div>
+</div>

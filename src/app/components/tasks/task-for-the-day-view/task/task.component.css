@@ -75,5 +75,6 @@ input[type=checkbox]:checked::before {
 
 /* Set trash icon color */
 i.fa-trash {
+  font-size: calc(1rem + .5vw);
   color: var(--bs-light) !important;
 }

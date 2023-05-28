@@ -1,27 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'todo-app';
+export class AppComponent {
 
-  constructor(private firestore: AngularFirestore) {
-  }
-
-  ngOnInit(): void {
-    this.firestore.collection('collection-name').doc('document-id').set({
-      field1: 'new-value1',
-      field2: 'new-value2'
-    })
-      .then(() => {
-        console.log('Document successfully updated!');
-      })
-      .catch((error) => {
-        console.error('Error updating document: ', error);
-      });
-  }
 }

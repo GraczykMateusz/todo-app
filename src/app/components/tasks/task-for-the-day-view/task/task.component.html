@@ -1,16 +1,16 @@
 <div class="task-bg task-height w-100 rounded-4 mb-2" [ngClass]="{'removing': isTaskRemoving}">
   <div class="d-inline-flex task-height w-100">
     <div class="d-flex task-height justify-content-center align-items-center checkbox-size ms-1 me-2">
-      <input type="checkbox" (change)="toggleCompleteTask()">
+      <input type="checkbox" [(ngModel)]="task.isCompleted" (click)="toggleCompleteTask()">
     </div>
     <div class="d-flex task-height justify-content-start align-items-center w-100">
       <input type="text" class="text-truncate task-text-max-width me-3 w-100"
-             [ngClass]="{'strike-through': isTaskCompleted}"
-             value="Nananana annanana ugabuga bugabgua zjedz pierugsjdif ndason dia"/>
+             [ngClass]="{'strike-through': task.isCompleted}"
+             [value]="task.content"/>
     </div>
     <div class="d-flex task-height align-items-center me-4 cursor-p"
          (click)="removeTask()">
-      <i class="fas fa-trash fa-1x"></i>
+      <i class="fas fa-trash"></i>
     </div>
   </div>
 </div>
