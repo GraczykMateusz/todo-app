@@ -51,12 +51,6 @@
             "allowTemplateLiterals": true
           }
         ],
-        "@typescript-eslint/typedef": [
-          "warn",
-          {
-            "variableDeclaration": true
-          }
-        ],
         "@typescript-eslint/no-empty-function": [
           "error"
         ],

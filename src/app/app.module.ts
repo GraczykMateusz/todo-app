@@ -10,8 +10,7 @@ import { DayComponent } from './components/tasks/days-view/day/day.component';
 import { environment } from '../environments/environment';
 import { AddTaskViewComponent } from './components/tasks/add-task-view/add-task-view.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,16 +23,20 @@ import { FormsModule } from '@angular/forms';
     DayComponent,
     AddTaskViewComponent
   ],
-    imports: [
-        BrowserModule,
-        NgbModule,
-        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-        provideFirestore(() => getFirestore()),
-        FormsModule
-    ],
-  providers: [
-    {provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig}
+  imports: [
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => {
+      const firestore = getFirestore();
+      if (!environment.production) {
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+      }
+      return firestore;
+    }),
+    FormsModule,
+    BrowserModule,
+    NgbModule
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

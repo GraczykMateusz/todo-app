@@ -3,7 +3,6 @@ import { map, Observable } from 'rxjs';
 import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, query, updateDoc, where } from '@angular/fire/firestore';
 import { NewTask } from './model/new-task';
 import { Task } from './model/task';
-import { DocumentData } from '@angular/fire/compat/firestore';
 import { OwnDate } from '../days/own-date';
 
 @Injectable({
@@ -25,7 +24,7 @@ export class TasksService {
   getTasksByDate(ownDate: OwnDate): Observable<Task[]> {
     const queryFn: any = query(this.tasksCollection, where('date', '==', ownDate.date));
     return collectionData(queryFn, {idField: 'id'})
-      .pipe(map((tasks: DocumentData[]) => tasks.map((task: DocumentData) => task as Task)));
+      .pipe(map(tasks => tasks.map(task => task as Task)));
   }
 
   toggleCompleteTask(id: string, isCompleted: boolean): Promise<void> {
