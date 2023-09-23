@@ -37,9 +37,9 @@ h6 {
 
 h1, h2, h3, h4, h5, h6, input[type=text] {
   color: var(--bs-light) !important;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif !important;
 }
 
 .cursor-p {
-  cursor: pointer;
+  cursor: pointer !important;
 }
