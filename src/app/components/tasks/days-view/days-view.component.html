@@ -2,7 +2,7 @@
   <ng-container>
     <ng-template ngbSlide *ngFor="let day of days; let i = index">
       <div class="d-flex justify-content-around">
-        <app-day class="d-flex w-100" [day]="day" [isToday]="i === 0"></app-day>
+        <app-day class="d-flex w-100 app-day-height" [day]="day" [isToday]="i === 0"></app-day>
       </div>
     </ng-template>
   </ng-container>
