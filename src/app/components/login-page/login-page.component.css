@@ -1,0 +1,121 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(61, 79, 144, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    padding-top: 50px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 50%;
+    height: 70%;
+    padding-top: 50px;
+}
+
+.login-container-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+
+.created-by {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.created-by .icon {
+    font-size: 25px;
+    cursor: pointer;
+    color: snow;
+}
+
+h1, h5 {
+    margin-bottom: 0 !important;
+    font-family: 'Calisto MT', serif !important;
+}
+
+h1 {
+    font-weight: 700;
+    letter-spacing: 7px;
+}
+
+h5 {
+    letter-spacing: 1px;
+}
+
+input {
+    background-color: snow;
+    border-width: 0 !important;
+    border-radius: 10px;
+    padding-left: 41px !important;
+    font-size: 20px;
+}
+
+button,
+input {
+    width: calc(13rem + 20vw) !important;
+    height: 45px;
+    max-width: 450px;
+}
+
+button {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    backdrop-filter: blur(30px);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container .fa-user,
+.input-container .fa-lock {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.invalid {
+    color: red;
+    font-weight: 700;
+}

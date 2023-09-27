@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "fire-emu": "firebase emulators:start --only firestore --project monastyr-todo"
+    "fire-emu": "firebase emulators:start --only firestore,auth --project monastyr-todo"
   },
   "private": true,
   "dependencies": {

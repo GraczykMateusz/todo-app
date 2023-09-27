@@ -1,0 +1,30 @@
+<div class="login-page">
+    <div class="title">
+        <h1>MONASTYR</h1>
+        <div class="created-by">
+            <h5>CREATED BY MATEUSZ GRACZYK</h5>
+            <a class="fa-brands fa-github icon" target="_blank" href="https://github.com/GraczykMateusz"></a>
+            <a class="fa-brands fa-linkedin icon" target="_blank"
+               href="https://www.linkedin.com/in/mateusz-graczyk-009254211/"></a>
+        </div>
+    </div>
+    <div class="login-container">
+        <form class="login-container-input" [formGroup]="loginGroup">
+            <div class="input-container">
+                <i class="fa-solid fa-user"></i>
+                <input placeholder="Email" type="email" formControlName="email" (change)="resetError()"/>
+            </div>
+            <div class="input-container">
+                <i class="fa-solid fa-lock"></i>
+                <input placeholder="Password" type="password" formControlName="password" (change)="resetError()"/>
+            </div>
+            <button (click)="signIn()">SIGN IN</button>
+            <div class="invalid" >
+                <p *ngIf="error === Error.INVALID_EMAIL_OR_PASSWORD">Invalid email or password!</p>
+                <p *ngIf="error === Error.VERIFY_EMAIL">Verify your email!</p>
+                <p *ngIf="error === Error.TOO_MANY_REQUESTS">Too many request!<br/>Probably you should verify your email!</p>
+                <p *ngIf="error === Error.SOMETHING_WENT_WRONG">Something went wrong!</p>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { isDevMode, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
@@ -11,8 +11,12 @@ import { environment } from '../environments/environment';
 import { AddTaskViewComponent } from './components/tasks/add-task-view/add-task-view.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     TaskForTheDayViewComponent,
     DaysViewComponent,
     DayComponent,
-    AddTaskViewComponent
+    AddTaskViewComponent,
+    LoginPageComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
@@ -33,6 +38,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       }
       return firestore;
     }),
+    provideAuth(() => {
+      const auth = getAuth();
+      if (!environment.production) {
+        connectAuthEmulator(auth, 'localhost:9099');
+      }
+      return auth;
+    }),
     FormsModule,
     BrowserModule,
     NgbModule,
@@ -41,9 +53,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: LOCALE_ID, useValue: 'PL'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
