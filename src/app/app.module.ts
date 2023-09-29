@@ -41,7 +41,7 @@ import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
     provideAuth(() => {
       const auth = getAuth();
       if (!environment.production) {
-        connectAuthEmulator(auth, 'localhost:9099');
+        connectAuthEmulator(auth, 'http://localhost:9099');
       }
       return auth;
     }),
