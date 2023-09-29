@@ -7,10 +7,10 @@ export class NewTask {
   private readonly _ownDate: OwnDate;
   private readonly _user: string;
 
-  constructor(content: string, user: string) {
+  constructor(content: string, user: string, ownDate: OwnDate) {
     this._content = content;
     this._isCompleted = false;
-    this._ownDate = OwnDate.today();
+    this._ownDate = ownDate;
     this._user = user;
   }
 
