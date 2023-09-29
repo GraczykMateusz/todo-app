@@ -19,6 +19,10 @@ export class TasksService {
     return addDoc(this.tasksCollection, task.asObject());
   }
   
+  updateTaskContent(task: Task): Promise<any> {
+    return updateDoc(doc(this.tasksCollection, task.id), {content: task.content});
+  }
+  
   removeTask(id: string): Promise<void> {
     return deleteDoc(doc(this.tasksCollection, id));
   }
