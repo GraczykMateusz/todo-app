@@ -40,6 +40,9 @@ export class AddTaskViewComponent implements OnInit, OnDestroy{
     if (this.content == '' || this.content == null) {
       return;
     }
+    if (this.content.trim() === '') {
+      return;
+    }
     const task: NewTask = new NewTask(this.content, this.userService.getUser(), this.ownDate);
     this.taskService.addTask(task)
       .then(() => this.content = '');

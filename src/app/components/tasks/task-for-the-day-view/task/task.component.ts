@@ -40,6 +40,10 @@ export class TaskComponent implements OnInit {
     if (this.task.content === this.originalContent) {
       return;
     }
+    if (this.task.content.trim() === '') {
+      this.removeTask();
+      return;
+    }
     this.taskService.updateTaskContent(this.task).then();
   }
 }
