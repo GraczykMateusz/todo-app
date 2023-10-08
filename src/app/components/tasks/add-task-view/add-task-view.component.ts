@@ -3,7 +3,7 @@ import { TasksService } from '../../../services/tasks/tasks.service';
 import { NewTask } from '../../../services/tasks/model/new-task';
 import { UserService } from '../../../services/user/user.service';
 import { DaysService } from '../../../services/days/days.service';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { debounceTime, Observable, Subject, take, takeUntil } from 'rxjs';
 import { Day } from '../../../services/days/days';
 import { OwnDate } from '../../../services/days/own-date';
 
@@ -45,6 +45,10 @@ export class AddTaskViewComponent implements OnInit, OnDestroy{
     }
     const task: NewTask = new NewTask(this.content, this.userService.getUser(), this.ownDate);
     this.taskService.addTask(task)
-      .then(() => this.content = '');
+      .pipe(
+        debounceTime(700),
+        take(1)
+      )
+      .subscribe(() => this.content = '');
   }
 }

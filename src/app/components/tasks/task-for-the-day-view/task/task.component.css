@@ -2,13 +2,6 @@
   background-color: #0C1954FF;
 }
 
-.task-bg.removing {
-  position: relative;
-  transition: all 0.3s ease-in-out;
-  transform: translateX(100%);
-  opacity: 0;
-}
-
 .task-height {
   height: calc(2.25rem + 2vw);
 }

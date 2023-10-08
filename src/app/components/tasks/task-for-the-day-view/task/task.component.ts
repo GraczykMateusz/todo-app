@@ -12,32 +12,24 @@ export class TaskComponent implements OnInit {
   @Input()
   public task!: Task;
   
-  private originalContent!: string;
-  
   private readonly taskService: TasksService = inject(TasksService);
-
-  private _isTaskRemoving: boolean = false;
+  
+  private _originalContent!: string;
   
   ngOnInit(): void {
-    this.originalContent = this.task.content;
+    this._originalContent = this.task.content;
   }
   
   toggleCompleteTask(): void {
-    this.taskService.toggleCompleteTask(this.task.id, !this.task.isCompleted)
-      .then(() => this.task.isCompleted = !this.task.isCompleted);
+    this.taskService.toggleCompleteTask(this.task.id, !this.task.isCompleted).then();
   }
-
-  get isTaskRemoving(): boolean {
-    return this._isTaskRemoving;
-  }
-
+  
   removeTask(): void {
-    this.taskService.removeTask(this.task.id)
-      .then(() => this._isTaskRemoving = true);
+    this.taskService.deleteTask(this.task).then();
   }
   
   updateTaskContentIfNeeded(): void {
-    if (this.task.content === this.originalContent) {
+    if (this.task.content === this._originalContent) {
       return;
     }
     if (this.task.content.trim() === '') {
