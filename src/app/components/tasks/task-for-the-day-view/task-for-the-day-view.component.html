@@ -2,5 +2,11 @@
   <ng-container *ngFor="let task of tasks$ | async">
     <app-task [task]="task"></app-task>
   </ng-container>
+  <div class="undo-container">
+    <div class="d-inline-flex justify-content-center align-items-center gap-2 w-100">
+      <h4 class="w-50">Task will be deleted!</h4>
+      <button class="btn btn-warning w-50"><h5>Cancel (5s)</h5></button>
+    </div>
+  </div>
 </div>
 
