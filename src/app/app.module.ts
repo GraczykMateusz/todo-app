@@ -17,6 +17,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
+import { UndoTaskDeletionComponent } from './components/tasks/task-for-the-day-view/undo-task-deletion/undo-task-deletion.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
     DaysViewComponent,
     DayComponent,
     AddTaskViewComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    UndoTaskDeletionComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

@@ -11,10 +11,10 @@ import { Task } from '../../../services/tasks/model/task';
   styleUrls: ['./task-for-the-day-view.component.css']
 })
 export class TaskForTheDayViewComponent {
-
+  
   private readonly daysService: DaysService = inject(DaysService);
   private readonly taskService: TasksService = inject(TasksService);
-
+  
   readonly tasks$: Observable<Task[]> = this.daysService.currentDay.pipe(
     switchMap((day: Day) => this.taskService.getTasksByDate(day.ownDate))
   );

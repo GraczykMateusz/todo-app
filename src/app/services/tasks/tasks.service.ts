@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { map, Observable, of, Subject } from 'rxjs';
-import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, query, updateDoc, where } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, orderBy, query, updateDoc, where } from '@angular/fire/firestore';
 import { NewTask } from './model/new-task';
 import { Task } from './model/task';
 import { OwnDate } from '../days/own-date';
@@ -45,7 +45,8 @@ export class TasksService {
     const queryFn: any = query(
       this.tasksCollection,
       where('date', '==', ownDate.date),
-      where('user', '==', this.userService.getUser())
+      where('user', '==', this.userService.getUser()),
+      orderBy('content')
     );
     return collectionData(queryFn, {idField: 'id'})
       .pipe(map((tasks: any) => tasks.map((task: any) => task as Task)));
