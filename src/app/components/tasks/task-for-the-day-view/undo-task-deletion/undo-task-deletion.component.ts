@@ -11,6 +11,7 @@ export class UndoTaskDeletionComponent implements OnDestroy {
   protected timeToDeleteTaskInSeconds: number = 3;
   
   private readonly taskService: TasksService = inject(TasksService);
+  private isClicked: boolean = false;
   
   private readonly _intervalId = setInterval(() => {
     this.timeToDeleteTaskInSeconds = this.timeToDeleteTaskInSeconds - 1;
@@ -25,6 +26,11 @@ export class UndoTaskDeletionComponent implements OnDestroy {
   }
   
   undo(): void {
+    if (!this.isClicked) {
+      this.isClicked = true;
+    } else {
+      return;
+    }
     clearInterval(this._intervalId);
     this.taskService.undoTaskDeletion().then();
   }
