@@ -33,6 +33,7 @@ export class TaskComponent implements OnInit {
       return;
     }
     if (this.task.content.trim() === '') {
+      this.task.content = this._originalContent;
       this.removeTask();
       return;
     }
