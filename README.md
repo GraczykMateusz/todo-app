@@ -7,6 +7,7 @@ Requirements:
 * Tasks can be added for a specific day of the week.
 * Tasks are displayed for the current day and up to a week ahead.
 * Ability to undo task deletion, for example, in case of accidental removal,
+* Overdue tasks should be moved to current day with "(Overdue - )" prefix,
 * A mobile application for Android devices.
 
 The application was created solely for my personal use, so I do not allow the possibility of registration and usage by third parties.
