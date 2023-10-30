@@ -17,7 +17,7 @@ Link: https://monastyr-todo.web.app
 ### Login page | Main dashboard | Application overview
 
 <div style="display: inline">
-  <img src="docs/login-page.jpg" width="285px" height="auto"/>
-  <img src="docs/dashboard.jpg" width="285px" height="auto"/>
-  <img src="docs/app-overview.gif" width="285px" height="auto"/>
+  <img src="docs/login-page.jpg" width="265px" height="auto"/>
+  <img src="docs/dashboard.jpg" width="265px" height="auto"/>
+  <img src="docs/app-overview.gif" width="265px" height="auto"/>
 </div>
