@@ -21,8 +21,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/site.webmanifest",
-              "src/manifest.webmanifest"
+              "src/site.webmanifest"
             ],
             "styles": [
               "src/styles.css",
@@ -106,8 +105,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/site.webmanifest",
-              "src/manifest.webmanifest"
+              "src/site.webmanifest"
             ],
             "styles": [
               "src/styles.css",
