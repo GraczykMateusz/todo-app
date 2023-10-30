@@ -1,27 +1,23 @@
 # TodoApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+An application for managing tasks for a given week. I was looking for an app that would allow me to add, delete, edit, and mark tasks as completed for a specific day in a straightforward manner. The idea was to plan tasks for the entire upcoming week on Sundays. The application was meant to be simple, without unnecessary features, and accessible on Android devices. I decided to program it myself.
 
-## Development server
+Requirements:
+* Ability to add, edit, and delete tasks.
+* Tasks can be added for a specific day of the week.
+* Tasks are displayed for the current day and up to a week ahead.
+* Ability to undo task deletion, for example, in case of accidental removal,
+* A mobile application for Android devices.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The application was created solely for my personal use, so I do not allow the possibility of registration and usage by third parties.
 
-## Code scaffolding
+Link: https://monastyr-todo.web.app
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-------------------------------
+### Login page | Main dashboard | Application overview
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<div style="display: inline">
+  <img src="docs/login-page.jpg" width="285px" height="auto"/>
+  <img src="docs/dashboard.jpg" width="285px" height="auto"/>
+  <img src="docs/app-overview.gif" width="285px" height="auto"/>
+</div>
