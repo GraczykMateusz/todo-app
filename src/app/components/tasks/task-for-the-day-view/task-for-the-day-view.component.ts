@@ -16,7 +16,7 @@ export class TaskForTheDayViewComponent {
   private readonly taskService: TasksService = inject(TasksService);
   
   readonly tasks$: Observable<Task[]> = this.daysService.currentDay.pipe(
-    switchMap((day: Day) => this.taskService.getTasksByDate(day.ownDate))
+    switchMap((day: Day) => this.taskService.getTasksByDateForCurrentUser(day.ownDate))
   );
   
   readonly showUndo$: Observable<boolean> = this.taskService.getShowUndoAsObservable();

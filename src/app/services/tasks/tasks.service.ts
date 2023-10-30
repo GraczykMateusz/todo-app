@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { map, Observable, of, Subject } from 'rxjs';
+import { map, Observable, of, Subject, take } from 'rxjs';
 import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, orderBy, query, updateDoc, where } from '@angular/fire/firestore';
 import { NewTask } from './model/new-task';
 import { Task } from './model/task';
@@ -41,7 +41,45 @@ export class TasksService {
     return this.hideUndoComponent();
   }
   
-  getTasksByDate(ownDate: OwnDate): Observable<Task[]> {
+  moveTasksByDateAndCleanDbRubbish(): void {
+    this.getTasksForUser()
+      .pipe(take(1))
+      .subscribe((tasks: Task[]) => {
+        this.movePreviousUndoneTasksToCurrentDay(tasks);
+        this.cleanDbRubbishTasks(tasks);
+      });
+  }
+  
+  movePreviousUndoneTasksToCurrentDay(tasks: Task[]): void {
+    tasks
+      .filter((task: Task) => !task.isCompleted)
+      .filter((task: Task) => OwnDate.compare(OwnDate.fromString(task.date), OwnDate.today()))
+      .forEach((task: Task): void => {
+        this.makeTaskOverdue(task)
+          .catch((err) => console.error(err));
+      });
+  }
+  
+  cleanDbRubbishTasks(tasks: Task[]): void {
+    tasks
+      .filter((task: Task) => task.isCompleted)
+      .filter((task: Task) => OwnDate.compare(OwnDate.fromString(task.date), OwnDate.today()))
+      .forEach((task: Task): void  => {
+        deleteDoc(doc(this.tasksCollection, task.id))
+          .catch((err) => console.error(err));
+      });
+  }
+  
+  getTasksForUser(): Observable<Task[]> {
+    const queryFn: any = query(
+      this.tasksCollection,
+      where('user', '==', this.userService.getUser())
+    );
+    return collectionData(queryFn, {idField: 'id'})
+      .pipe(map((tasks: any) => tasks.map((task: any) => task as Task)));
+  }
+  
+  getTasksByDateForCurrentUser(ownDate: OwnDate): Observable<Task[]> {
     const queryFn: any = query(
       this.tasksCollection,
       where('date', '==', ownDate.date),
@@ -66,5 +104,13 @@ export class TasksService {
   
   showUndoComponent(): void {
     this.showUndo.next(true);
+  }
+  
+  makeTaskOverdue(task: Task): Promise<void> {
+    task.content = task.content.includes('(Overdue) - ') ? task.content : '(Overdue) - ' + task.content;
+    return updateDoc(doc(this.tasksCollection, task.id), {
+      content: task.content,
+      date: OwnDate.today().date
+    });
   }
 }

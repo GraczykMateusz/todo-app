@@ -20,7 +20,7 @@ export class DayComponent {
   private readonly daysService: DaysService = inject(DaysService);
 
   readonly taskCount$: Observable<TaskCount> = this.daysService.currentDay.pipe(
-    switchMap((day: Day) => this.taskService.getTasksByDate(day.ownDate)),
+    switchMap((day: Day) => this.taskService.getTasksByDateForCurrentUser(day.ownDate)),
     map((tasks: Task[]) => {
       return new TaskCount(tasks.filter(task => task.isCompleted).length, tasks.length);
     })
