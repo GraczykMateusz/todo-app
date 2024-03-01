@@ -28,7 +28,29 @@ export class OwnDate {
   }
   
   static compare(d1: OwnDate, d2: OwnDate): boolean {
-    return d1._dateObj.toLocaleDateString() < d2._dateObj.toLocaleDateString();
+    const d1Date = d1._dateObj;
+    const d2Date = d2._dateObj;
+    
+    const d1Day = d1Date.getDate();
+    const d1Month = d1Date.getMonth();
+    const d1Year = d1Date.getFullYear();
+    
+    const d2Day = d2Date.getDate();
+    const d2Month = d2Date.getMonth();
+    const d2Year = d2Date.getFullYear();
+    
+    // Compare year
+    if (d1Year !== d2Year) {
+      return d1Year < d2Year;
+    }
+    
+    // Compare month
+    if (d1Month !== d2Month) {
+      return d1Month < d2Month;
+    }
+    
+    // Compare day
+    return d1Day < d2Day;
   }
 
   get date(): string {
