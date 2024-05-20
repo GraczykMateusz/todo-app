@@ -1,4 +1,4 @@
-# TodoApp
+# Monastyr (TodoApp)
 
 An application for managing tasks for a given week. I was looking for an app that would allow me to add, delete, edit, and mark tasks as completed for a specific day in a straightforward manner. The idea was to plan tasks for the entire upcoming week on Sundays. The application was meant to be simple, without unnecessary features, and accessible on Android devices. I decided to program it myself.
 
